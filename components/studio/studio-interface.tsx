@@ -88,7 +88,7 @@ export function StudioInterface() {
   };
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex bg-background">
       {/* Sidebar */}
       <StudioSidebar />
       

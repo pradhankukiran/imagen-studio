@@ -8,7 +8,7 @@ export default function StudioLayout({
   return (
     <div className="flex h-screen flex-col">
       <StudioNavbar />
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1">
         {children}
       </div>
     </div>
