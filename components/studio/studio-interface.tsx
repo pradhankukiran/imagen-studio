@@ -95,19 +95,15 @@ export function StudioInterface() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col h-full">
-          <div className="border-b px-4 flex-shrink-0 bg-card">
+          <div className="border-b px-4 flex justify-center flex-shrink-0 bg-card">
             <TabsList className="h-12 bg-transparent border-none p-0">
-              <TabsTrigger value="create" className="flex items-center gap-2 px-4 data-[state=active]:bg-muted data-[state=active]:shadow-none rounded-t-md border-b-2 border-transparent data-[state=active]:border-primary h-full -mb-px">
+              <TabsTrigger value="create" className="flex items-center gap-2 px-4 data-[state=active]:bg-muted data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-primary h-full -mb-px rounded-none">
                 <Wand2 className="h-4 w-4" />
                 <span>Create</span>
               </TabsTrigger>
-              <TabsTrigger value="edit" className="flex items-center gap-2 px-4 data-[state=active]:bg-muted data-[state=active]:shadow-none rounded-t-md border-b-2 border-transparent data-[state=active]:border-primary h-full -mb-px">
+              <TabsTrigger value="edit" className="flex items-center gap-2 px-4 data-[state=active]:bg-muted data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-primary h-full -mb-px rounded-none">
                 <ImageIcon className="h-4 w-4" />
                 <span>Edit</span>
-              </TabsTrigger>
-              <TabsTrigger value="layers" className="flex items-center gap-2 px-4 data-[state=active]:bg-muted data-[state=active]:shadow-none rounded-t-md border-b-2 border-transparent data-[state=active]:border-primary h-full -mb-px">
-                <Layers className="h-4 w-4" />
-                <span>Layers</span>
               </TabsTrigger>
             </TabsList>
           </div>
@@ -330,42 +326,6 @@ export function StudioInterface() {
                 </div>
               </div>
             )}
-          </TabsContent>
-          
-          {/* Layers Tab */}
-          <TabsContent value="layers">
-            <div className="flex-1 grid grid-cols-[300px_1fr] divide-x h-full">
-              <div className="p-4 space-y-4 overflow-y-auto bg-card">
-                <h3 className="font-semibold text-lg">Layers</h3>
-                <div className="space-y-2">
-                  {['Background', 'Subject', 'Foreground', 'Effects'].map((layer, i) => (
-                    <div key={i} className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 cursor-pointer">
-                      <div className="w-4 h-4 rounded-sm bg-primary/20 border border-primary/30"></div>
-                      <span>{layer}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="p-4 overflow-y-auto bg-muted/30">
-                <h3 className="font-semibold text-lg mb-4">Layer Properties</h3>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Opacity</label>
-                    <input type="range" className="w-full" min="0" max="100" defaultValue="100" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Blend Mode</label>
-                    <select className="w-full h-10 px-3 rounded-md border bg-input text-foreground">
-                      <option>Normal</option>
-                      <option>Multiply</option>
-                      <option>Screen</option>
-                      <option>Overlay</option>
-                    </select>
-                  </div>
-                  {/* Add more layer properties as needed */}
-                </div>
-              </div>
-            </div>
           </TabsContent>
         </Tabs>
       </div>
