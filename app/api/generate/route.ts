@@ -1,4 +1,4 @@
-import { GoogleGenAI, HarmCategory, HarmBlockThreshold, Part, Modality } from '@google/genai';
+import { GoogleGenAI, Part, Modality } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
 import mime from 'mime';
 
@@ -6,45 +6,18 @@ import mime from 'mime';
 export const dynamic = 'force-dynamic';
 
 const MODEL_NAME = "gemini-2.0-flash-exp-image-generation"; // Use the experimental model
-const API_KEY = process.env.GEMINI_API_KEY;
-
-if (!API_KEY) {
-  throw new Error('Missing GEMINI_API_KEY environment variable.');
-}
-
-// Configuration for the generation - adjust safety settings if needed
-const generationConfig = {
-  temperature: 0.8, // Example temperature, adjust as needed
-  topK: 32,
-  topP: 1,
-  maxOutputTokens: 4096, // Adjust if necessary, though response is mainly image
-};
-
-// Safety settings - Set all to BLOCK_NONE to minimize filtering
-const safetySettings = [
-  {
-    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-];
-
-// Initialize with the correct class name and options object
-const genAI = new GoogleGenAI({ apiKey: API_KEY });
 
 export async function POST(request: NextRequest) {
   try {
+    const API_KEY = process.env.GEMINI_API_KEY;
+    if (!API_KEY) {
+      return NextResponse.json(
+        { error: 'GEMINI_API_KEY is not configured on the server.' },
+        { status: 500 }
+      );
+    }
+
+    const genAI = new GoogleGenAI({ apiKey: API_KEY });
     const { prompt, style, aspectRatio } = await request.json();
 
     if (!prompt) {
