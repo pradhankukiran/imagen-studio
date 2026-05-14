@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { 
   Camera,
   Megaphone,
@@ -9,15 +8,14 @@ import {
   Film,
   Replace,
   Grid3X3,
-  Sparkles,
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ProductShotsWorkspace } from '@/components/studio/product-shots-workspace';
 import { AdCreativesWorkspace } from '@/components/studio/ad-creatives-workspace';
 import { SocialPostsWorkspace } from '@/components/studio/social-posts-workspace';
 import { VideoWorkspace } from '@/components/studio/video-workspace';
 import { BackgroundStudioWorkspace } from '@/components/studio/background-studio-workspace';
+import { BatchResizeWorkspace } from '@/components/studio/batch-resize-workspace';
 
 const TAB_TRIGGER_CLASS = "flex items-center gap-2 px-4 data-[state=active]:bg-muted data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-primary h-full -mb-px rounded-none text-sm";
 const TAB_CONTENT_CLASS = "flex-1 overflow-hidden m-0 p-0 h-full data-[state=active]:flex";
@@ -67,25 +65,11 @@ export function StudioInterface() {
           <TabsContent value="background-studio" className={TAB_CONTENT_CLASS}>
             <BackgroundStudioWorkspace />
           </TabsContent>
-          
-          <TabsContent value="batch-resize" className="flex-1 overflow-auto m-0 p-0 h-full data-[state=active]:flex">
-            <TabPlaceholder icon={<Grid3X3 className="h-16 w-16" />} title="Batch Resize" description="Coming Soon" />
+          <TabsContent value="batch-resize" className={TAB_CONTENT_CLASS}>
+            <BatchResizeWorkspace />
           </TabsContent>
         </Tabs>
       </div>
-    </div>
-  );
-}
-
-function TabPlaceholder({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
-  return (
-    <div className="flex-1 flex flex-col items-center justify-center p-6 bg-muted/30 min-h-full w-full">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-md text-center">
-        <div className="mx-auto mb-6 text-muted-foreground flex justify-center">{icon}</div>
-        <h2 className="text-2xl font-bold mb-3">{title}</h2>
-        <p className="text-muted-foreground mb-6">{description}</p>
-        <Button variant="outline" className="gap-2"><Sparkles className="h-4 w-4" />Coming Soon</Button>
-      </motion.div>
     </div>
   );
 }
