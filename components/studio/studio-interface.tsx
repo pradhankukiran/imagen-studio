@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ProductShotsWorkspace } from '@/components/studio/product-shots-workspace';
 import { AdCreativesWorkspace } from '@/components/studio/ad-creatives-workspace';
+import { SocialPostsWorkspace } from '@/components/studio/social-posts-workspace';
 
 const TAB_TRIGGER_CLASS = "flex items-center gap-2 px-4 data-[state=active]:bg-muted data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-primary h-full -mb-px rounded-none text-sm";
 const TAB_CONTENT_CLASS = "flex-1 overflow-hidden m-0 p-0 h-full data-[state=active]:flex";
@@ -55,10 +56,10 @@ export function StudioInterface() {
           <TabsContent value="ad-creatives" className={TAB_CONTENT_CLASS}>
             <AdCreativesWorkspace />
           </TabsContent>
-          
-          <TabsContent value="social-posts" className="flex-1 overflow-auto m-0 p-0 h-full data-[state=active]:flex">
-            <TabPlaceholder icon={<Share2 className="h-16 w-16" />} title="Social Posts" description="Coming Soon" />
+          <TabsContent value="social-posts" className={TAB_CONTENT_CLASS}>
+            <SocialPostsWorkspace />
           </TabsContent>
+          
           <TabsContent value="video" className="flex-1 overflow-auto m-0 p-0 h-full data-[state=active]:flex">
             <TabPlaceholder icon={<Film className="h-16 w-16" />} title="Video" description="Coming Soon" />
           </TabsContent>
