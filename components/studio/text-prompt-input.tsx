@@ -51,8 +51,8 @@ export function TextPromptInput({
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         disabled={disabled} // Use prop disabled
-        className="min-h-[80px] max-h-[200px] px-4 py-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-        rows={3} // Initial rows, height adjusts dynamically
+        className="min-h-[56px] max-h-[160px] px-3 py-2.5 rounded-md border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none disabled:opacity-50 disabled:cursor-not-allowed placeholder:text-muted-foreground/50"
+        rows={2} // Initial rows, height adjusts dynamically
       />
     </div>
   );

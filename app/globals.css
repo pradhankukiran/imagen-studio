@@ -80,3 +80,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+.bg-dot-pattern {
+  background-image: radial-gradient(hsl(var(--muted-foreground) / 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
