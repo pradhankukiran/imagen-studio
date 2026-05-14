@@ -17,6 +17,7 @@ import { ProductShotsWorkspace } from '@/components/studio/product-shots-workspa
 import { AdCreativesWorkspace } from '@/components/studio/ad-creatives-workspace';
 import { SocialPostsWorkspace } from '@/components/studio/social-posts-workspace';
 import { VideoWorkspace } from '@/components/studio/video-workspace';
+import { BackgroundStudioWorkspace } from '@/components/studio/background-studio-workspace';
 
 const TAB_TRIGGER_CLASS = "flex items-center gap-2 px-4 data-[state=active]:bg-muted data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-primary h-full -mb-px rounded-none text-sm";
 const TAB_CONTENT_CLASS = "flex-1 overflow-hidden m-0 p-0 h-full data-[state=active]:flex";
@@ -63,10 +64,10 @@ export function StudioInterface() {
           <TabsContent value="video" className={TAB_CONTENT_CLASS}>
             <VideoWorkspace />
           </TabsContent>
-          
-          <TabsContent value="background-studio" className="flex-1 overflow-auto m-0 p-0 h-full data-[state=active]:flex">
-            <TabPlaceholder icon={<Replace className="h-16 w-16" />} title="Background Studio" description="Coming Soon" />
+          <TabsContent value="background-studio" className={TAB_CONTENT_CLASS}>
+            <BackgroundStudioWorkspace />
           </TabsContent>
+          
           <TabsContent value="batch-resize" className="flex-1 overflow-auto m-0 p-0 h-full data-[state=active]:flex">
             <TabPlaceholder icon={<Grid3X3 className="h-16 w-16" />} title="Batch Resize" description="Coming Soon" />
           </TabsContent>
